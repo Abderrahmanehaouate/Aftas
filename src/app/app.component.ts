@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Aftas';
+  actions : Array<any> = [
+    {title: "Home", link: ""},
+    {title: "Competitions", link: "/competitions"},
+    {title: "Members", link: "/members"},
+  ];
+
+  currentAction: any;
+  setCurrentAction(action: any) {
+    this.currentAction = action;
+  }
 }

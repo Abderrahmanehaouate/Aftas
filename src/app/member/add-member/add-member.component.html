@@ -1,0 +1,129 @@
+<!-- This is an example component -->
+<div class="max-w-2xl mx-auto bg-white p-16">
+
+  <form>
+    <div class="grid gap-6 mb-6 lg:grid-cols-2">
+
+      <div>
+        <label for="num"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        >
+          num
+        </label>
+        <input
+          type="number"
+               id="num"
+               name="num"
+               class="bg-amber-500 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="6939"
+               [(ngModel)]="member.num"
+               required
+        >
+      </div>
+
+      <div>
+        <label
+          for="name"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        >
+          Name
+        </label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="John"
+          [(ngModel)]="member.name"
+          required>
+      </div>
+      <div>
+        <label
+          for="Family_name"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+          Family Name
+        </label>
+        <input
+          type="text"
+          id="Family_name"
+          name="Family Name"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Doe"
+          [(ngModel)]="member.familyName"
+          required
+        >
+      </div>
+      <div>
+        <label
+          for="accession_date"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+          Accession Date
+        </label>
+        <input
+          type="date"
+          id="accession_date"
+          name="accession_date"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          [(ngModel)]="member.accessionDate"
+          placeholder="yyyy-mm-dd"
+          required>
+      </div>
+      <div>
+        <label
+          for="nationality"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+          Nationality
+        </label>
+        <input
+          type="text"
+          id="nationality"
+          name="nationality"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          [(ngModel)]="member.nationality"
+          placeholder="Moroccan"
+          required>
+      </div>
+      <div>
+        <label
+          for="identityNumber"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+          Identity Number
+        </label>
+        <input
+          type="text"
+          id="identityNumber"
+          name="identityNumber"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="selected option"
+          [(ngModel)]="member.identityNumber"
+          required>
+      </div>
+    </div>
+    <div class="mb-6">
+      <label
+        for="identify_document_type"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+        Identity Document Type
+      </label>
+      <select
+        id="identify_document_type"
+        name="identify_document_type"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        [(ngModel)]="member.identityDocumentType"
+        required>
+        <option *ngFor="let option of options">
+          {{ option.label }}
+        </option>
+      </select>
+    </div>
+    <button
+      type="submit"
+      (click)="createMember(member)"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      Submit
+    </button>
+    <a routerLink="/members" class="text-gray-600 hover:underline">
+      Back to Members
+    </a>
+  </form>
+</div>

@@ -1,0 +1,167 @@
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="px-4 sm:px-6 lg:px-8">
+  <div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+      <h1 class="text-xl font-semibold text-gray-900">Competions</h1>
+      <p class="mt-2 text-sm text-gray-700">A list of all the competitons in your account including their name, title, email
+        and role.</p>
+    </div>
+    <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+      <button type="button"
+              routerLink="/competitions/create"
+              class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+        Add competition
+      </button>
+    </div>
+  </div>
+  <div class="mt-8 flex flex-col">
+    <div class="-my-2 -mx-4 sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle">
+        <div class="shadow-sm ring-1 ring-black ring-opacity-5">
+          <table class="min-w-full border-separate" style="border-spacing: 0">
+            <thead class="bg-gray-50">
+            <tr>
+              <th scope="col"
+                  class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter">
+                code
+              </th>
+              <th scope="col"
+                  class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8">
+                location
+              </th>
+              <th scope="col"
+                  class="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-center text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:table-cell">
+                date
+              </th>
+              <th scope="col"
+                  class="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell">
+                start time
+              </th>
+              <th scope="col"
+                  class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter">
+                end time
+              </th>
+              <th scope="col"
+                  class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell">
+                number of participants
+              </th>
+              <th scope="col"
+                  class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pr-4 pl-3 backdrop-blur backdrop-filter sm:pr-6 lg:pr-8">
+                <span
+                  class="">
+                  Edit
+                </span>
+              </th>
+              <th scope="col"
+                  class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pr-4 pl-3 backdrop-blur backdrop-filter sm:pr-6 lg:pr-8">
+                <span class="">
+                  Delete
+                </span>
+              </th>
+            </tr>
+            </thead>
+            <tbody class="bg-white">
+            <tr
+              *ngFor="let competition of competitions"
+              routerLink="/competitions/show/{{competition.id}}"
+            >
+              <td
+                class="whitespace-nowrap border-b border-gray-200 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">
+                {{competition.code}}
+              </td>
+              <td
+                class="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 text-center hidden lg:table-cell">
+                {{competition.location}}
+              </td>
+              <td
+                class="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 hidden lg:table-cell">
+                {{ getCompetitionStatus(competition)}}
+              </td>
+              <td
+                class="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 hidden lg:table-cell">
+                {{competition.startTime}}
+              </td>
+              <td
+                class="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500">
+                {{competition.endTime}}
+              </td>
+              <td
+                class="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 text-center hidden sm:table-cell">
+                {{competition.numberOfParticipants}}
+              </td>
+              <td
+                class="relative whitespace-nowrap border-b border-gray-200 py-4 pr-4 pl-3 text-right text-sm font-medium sm:pr-6 lg:pr-8">
+                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span
+                  class="sr-only">, Abderrahman Haouate</span></a>
+              </td>
+              <td
+                class="relative whitespace-nowrap border-b border-gray-200 py-4 pr-4 pl-3 text-right text-sm font-medium sm:pr-6 lg:pr-8">
+                <a
+                  (mousedown)="deleteCompetitionById(competition.id, $event)"
+                  class="text-red-500 hover:cursor-pointer hover:text-indigo-900">
+                  Delete
+                  <span
+                  class="sr-only">, Abderrahman Haouate </span></a>
+
+            </tr>
+
+            <!-- More people... -->
+            </tbody>
+          </table>
+        </div>
+        <!-- navigation -->
+        <nav class="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0">
+          <div class="-mt-px w-0 flex-1 flex">
+            <a href="#"
+               class="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+              <!-- Heroicon name: solid/arrow-narrow-left -->
+              <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                   fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
+                      clip-rule="evenodd"/>
+              </svg>
+              Previous
+            </a>
+          </div>
+          <div class="hidden md:-mt-px md:flex">
+            <a href="#"
+               class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium">
+              1 </a>
+            <!-- Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" -->
+            <a href="#"
+               class="border-indigo-500 text-indigo-600 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
+               aria-current="page"> 2 </a>
+            <a href="#"
+               class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium">
+              3 </a>
+            <span
+              class="border-transparent text-gray-500 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"> ... </span>
+            <a href="#"
+               class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium">
+              8 </a>
+            <a href="#"
+               class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium">
+              9 </a>
+            <a href="#"
+               class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium">
+              10 </a>
+          </div>
+          <div class="-mt-px w-0 flex-1 flex justify-end">
+            <a href="#"
+               class="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+              Next
+              <!-- Heroicon name: solid/arrow-narrow-right -->
+              <svg class="ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                   fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                      clip-rule="evenodd"/>
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

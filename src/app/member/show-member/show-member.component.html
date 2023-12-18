@@ -1,0 +1,45 @@
+<!-- show-member.component.html -->
+
+<div class="max-w-2xl mx-auto mt-8 p-4 bg-white shadow-md rounded-md">
+  <h2 class="text-2xl font-semibold mb-4">{{ member.name }} {{ member.familyName }}</h2>
+
+  <!-- Display member details -->
+  <div class="flex items-center mb-2">
+    <span class="font-semibold mr-2">Nationality:</span>
+    <span>{{ member.nationality }}</span>
+  </div>
+
+  <div class="flex items-center mb-2">
+    <span class="font-semibold mr-2">Identity Document Type:</span>
+    <span>{{ member.identityDocumentType }}</span>
+  </div>
+
+  <div class="flex items-center mb-2">
+    <span class="font-semibold mr-2">Identity Number:</span>
+    <span>{{ member.identityNumber }}</span>
+  </div>
+
+  <div class="flex items-center mb-2">
+    <span class="font-semibold mr-2">Accession Date:</span>
+    <span>{{ member.accessionDate }}</span>
+  </div>
+  <div class="flex items-center mb-2">
+    <span *ngFor="let rank of member.rankings" class="font-semibold mr-2">
+    Score: <span class="font-semibold mr-2">| {{ rank.score }}</span>
+    Rank: <span class="font-semibold mr-2">| {{ rank.rank }}</span>
+    </span>
+  </div>
+
+  <!-- Additional actions or buttons -->
+  <div class="mt-4 flex items-center">
+    <!-- Edit button -->
+    <button class="bg-blue-500 text-white px-4 py-2 rounded-md mr-2">
+      Edit
+    </button>
+
+    <!-- Add any other buttons or links as needed, for example, a back link -->
+    <a routerLink="/members" class="text-gray-600 hover:underline">
+      Back to Members
+    </a>
+  </div>
+</div>

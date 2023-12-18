@@ -1,0 +1,115 @@
+<!-- This is an example component -->
+<div class="max-w-2xl mx-auto bg-white p-16">
+
+  <form>
+    <div class="grid gap-6 mb-6 lg:grid-cols-2">
+
+      <div>
+        <label for="location"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        >
+          location
+        </label>
+        <input type="text"
+               id="location"
+               name="location"
+               class="bg-amber-500 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="John"
+               [(ngModel)]="competition.location"
+               required>
+      </div>
+
+      <div>
+        <label
+          for="date_format"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        >
+          Date
+        </label>
+        <input
+          type="date"
+          name="date"
+          id="date_format"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="mm/dd/yyyy"
+          [(ngModel)]="competition.date"
+          required>
+      </div>
+      <div>
+        <label
+          for="start_time"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+          Start time
+        </label>
+        <input
+          type="time"
+          id="start_time"
+          name="start_time"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="00:00:00"
+          value="08:00:00"
+          [(ngModel)]="competition.startTime"
+          required
+        >
+      </div>
+      <div>
+        <label
+          for="end_time"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+          End time
+        </label>
+        <input
+          type="time"
+          id="end_time"
+          name="end_time"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          value="18:00:00"
+          [(ngModel)]="competition.endTime"
+          required>
+      </div>
+    </div>
+    <div class="mb-6">
+      <label
+        for="amount"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+        amount
+      </label>
+      <input
+        type="number"
+        id="amount"
+        name="amount"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="$0.00"
+        value=""
+        [(ngModel)]="competition.amount"
+        required
+      >
+    </div>
+    <div class="mb-6">
+      <label
+        for="number_of_participants"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+        Number of participants
+      </label>
+      <input
+        type="number"
+        id="number_of_participants"
+        name="number_of_participants"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-500 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder=""
+        value="10"
+        [(ngModel)]="competition.numberOfParticipants"
+        required
+      >
+    </div>
+    <button
+      type="submit"
+      (click)="createCompetition(competition)"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      Submit
+    </button>
+    <a routerLink="/competitions" class="text-gray-600 hover:underline">
+      Back to Members
+    </a>
+  </form>
+</div>
