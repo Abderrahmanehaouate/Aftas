@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: "", component: IndexComponent, canActivate: [authenticationGuard]},
   {path: "manager", component: ManagerTemplateComponent, canActivate: [authenticationGuard]},
   {path: "competitions", component: ListCompetitionComponent, canActivate: [authenticationGuard]},
-  {path: "competitions/create", component: CreateCompetitionComponent , canActivate: [authorizationGuard, authenticationGuard], data: {roles: "MANAGER"}},
+  {path: "competitions/create", component: CreateCompetitionComponent , canActivate: [authorizationGuard, authenticationGuard], data: {roles: ["MANAGER", "JURY"]}},
   {path: "competitions/show/:id", component: ShowCompetitionComponent, canActivate: [authorizationGuard, authenticationGuard], data: {roles: "MANAGER"}},
   {path: "members", component: ListMemberComponent, canActivate: [authenticationGuard]},
   {path: "members/show/:id", component: ShowMemberComponent, canActivate: [authenticationGuard]},

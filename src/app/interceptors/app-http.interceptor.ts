@@ -21,8 +21,10 @@ export class AppHttpInterceptor implements HttpInterceptor {
       let newRequest = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${token}`)
       });
+
       return next.handle(newRequest);
-    }else return next.handle(request);
+    }else
+      return next.handle(request);
 
   }
 }
