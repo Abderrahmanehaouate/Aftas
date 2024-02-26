@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateCompetitionComponent } from './components/competition/create-competition/create-competition.component';
 import { ListCompetitionComponent } from './components/competition/list-competition/list-competition.component';
-import { AddMemberComponent } from './components/member/add-member/add-member.component';
 import { IndexComponent } from './home/index/index.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ListMemberComponent } from './components/member/list-member/list-member.component';
@@ -16,13 +15,14 @@ import { LoginComponent } from './components/login/login.component';
 import { ManagerTemplateComponent } from './components/manager-template/manager-template.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import {AppHttpInterceptor} from "./interceptors/app-http.interceptor";
+import { RegisterComponent } from './components/register/register.component';
+import { NotAuthorizedComponent } from './components/not-authorized/not-authorized.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateCompetitionComponent,
     ListCompetitionComponent,
-    AddMemberComponent,
     IndexComponent,
     ListMemberComponent,
     ShowCompetitionComponent,
@@ -30,6 +30,8 @@ import {AppHttpInterceptor} from "./interceptors/app-http.interceptor";
     LoginComponent,
     ManagerTemplateComponent,
     NavBarComponent,
+    RegisterComponent,
+    NotAuthorizedComponent,
   ],
   imports: [
     BrowserModule,

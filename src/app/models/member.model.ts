@@ -5,6 +5,8 @@ export interface Member {
   id: number
   num: number
   name: string
+  email: string
+  password: string
   familyName: string
   accessionDate: any
   nationality: string

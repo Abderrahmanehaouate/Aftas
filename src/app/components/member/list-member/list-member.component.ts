@@ -13,7 +13,7 @@ export class ListMemberComponent implements OnInit{
     members: Array<Member> = [];
     totalPages: number = 0;
     pageSize:number = 5;
-    currentPage: number = 1;
+    currentPage: number = 0;
 
     searchTerm: string = '';
     filteredMembers: any;
@@ -83,7 +83,7 @@ export class ListMemberComponent implements OnInit{
 
     public  deleteMemberById(id: any, event: Event){
       event.preventDefault();
-      // if(confirm("Are you sure you want to delete this member?"))
+      if(confirm("Are you sure you want to delete this member?"))
       this.service.deleteMemberById(id)
         .subscribe({
           next: () => {

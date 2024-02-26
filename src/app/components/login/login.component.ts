@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 export class LoginComponent implements OnInit{
 
   userFormGroup!: FormGroup;
+  error: string = "";
 
     constructor( private formBuilder:FormBuilder,
       private service:AuthenticationService,
@@ -32,10 +33,10 @@ export class LoginComponent implements OnInit{
         next: (data) => {
           console.log(data);
           this.service.loadProfile(data);
-          this.route.navigateByUrl("/manager");
         },
         error: (err) => {
           console.log(err);
+          this.error = err.error.message;
         }
       });
   }

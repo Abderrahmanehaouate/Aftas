@@ -3,18 +3,22 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {AppUser} from "../models/appUser.model";
 import {jwtDecode} from "jwt-decode";
+import {Member} from "../models/member.model";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  isAuthentificated: boolean = false;
+  isAuthentificated!: boolean;
   roles: any;
   email: any;
   accessToken: any;
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient,
+              private router:Router,
+              ) {
   }
 
   public login(email:string, password:string):Observable<AppUser> {
@@ -27,16 +31,45 @@ export class AuthenticationService {
 
   loadProfile(data: any) {
     this.isAuthentificated = true;
+    localStorage.setItem('isAuthentificated', JSON.stringify(this.isAuthentificated));
     this.accessToken = data.token;
-    // save token in local storage
     localStorage.setItem('token', this.accessToken);
-    // get token from local storage
-    this.accessToken = localStorage.getItem('token');
     let decodedToken: any = jwtDecode(this.accessToken);
-    console.log(decodedToken);
-    console.log(decodedToken.sub);
-    console.log(decodedToken.role);
     this.email = decodedToken.sub;
     this.roles = decodedToken.role;
+    localStorage.setItem('roles', JSON.stringify([this.roles]));
+
+
+    if (this.roles === "MANAGER") {
+      this.router.navigateByUrl('/manager');
+      console.log("MANAGER");
+    }if (this.roles === "MEMBER") {
+      console.log("not Activated");
+      if (decodedToken.isActivated) {
+        this.router.navigateByUrl('/competitions');
+        console.log("Member Activated");
+      }
+      else {
+        console.log("Member not Activated");
+      }
+    }if (this.roles === "JURY") {
+      this.router.navigateByUrl('/competitions');
+      console.log("JURY");
+    }
+  }
+
+  registerMember(member: Member) {
+    return this.http.post<Member>(`http://localhost:8080/register/member`, member);
+  }
+
+  logout() {
+    this.isAuthentificated = false;
+    this.accessToken = null;
+    this.email = null;
+    this.roles = null;
+    localStorage.removeItem('token');
+    localStorage.removeItem('roles');
+    localStorage.removeItem('isAuthentificated');
+    this.router.navigateByUrl('/login');
   }
 }

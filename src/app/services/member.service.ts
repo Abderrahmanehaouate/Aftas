@@ -20,16 +20,7 @@ export class MemberService {
   public deleteMemberById(id: any):Observable<any> {
       return this.http.delete(`http://localhost:8080/api/v1/members/${id}`)
   }
-  public addMember(member: {
-    nationality: string;
-    identityNumber: string;
-    num: number;
-    familyName: string;
-    name: string;
-    identityDocumentType: string;
-    id: number;
-    accessionDate: string
-  }):Observable<Member> {
+  public addMember(member: Member):Observable<Member> {
     return this.http.post<Member>(`http://localhost:8080/api/v1/members/create`, member)
   }
 }

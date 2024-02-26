@@ -12,7 +12,16 @@
           (submit)="login()"
           [formGroup]="userFormGroup"
           class="space-y-4 md:space-y-6">
-          {{ userFormGroup.value | json}}
+      <div *ngIf="error.length > 0" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold">Error!</strong>
+        <span class="block sm:inline">{{ error }}</span>
+        <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+          <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <title>Close</title>
+            <path d="M14.348 14.849a1 1 0 0 1-1.497 1.316l-3.851-4.103-3.85 4.103a1 1 0 1 1-1.498-1.316l3.85-4.102-3.85-4.103a1 1 0 1 1 1.498-1.316l3.85 4.102 3.851-4.102a1 1 0 0 1 1.498 1.316l-3.851 4.103 3.851 4.102a1 1 0 0 1 0 1.316z"/>
+          </svg>
+        </span>
+      </div>
           <div>
             <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
             <input type="email" formControlName="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="name123@youcode.com" required="">
@@ -34,7 +43,7 @@
           </div>
           <button href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Read more</button>
           <p class="text-sm font-light text-gray-500">
-            Don’t have an account yet? <a href="#" class="font-medium text-primary-600 hover:underline">Sign up</a>
+            Don’t have an account yet? <a routerLink="/register" class="font-medium text-primary-600 hover:underline">Sign up</a>
           </p>
         </form>
       </div>
